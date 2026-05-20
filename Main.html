@@ -179,23 +179,34 @@
       height:100%;
       object-fit:cover;
     }
+.flip-card-back{
+  transform:rotateY(180deg);
+  background:#fff5f5;
+  color:#5a0000;
 
-    .flip-card-back{
-      transform:rotateY(180deg);
-      background:#fff5f5;
-      color:#5a0000;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:25px;
-      overflow-y:auto;
-    }
+  display:flex;
+  justify-content:flex-start;
+  align-items:flex-start;
 
-    .poem{
-      font-family:'Cormorant Garamond', serif;
-      font-size:1rem;
-      line-height:1.9;
-    }
+  padding:20px;
+
+  overflow-y:auto;
+
+  scrollbar-width:none;
+
+  -ms-overflow-style:none;
+}
+
+.flip-card-back::-webkit-scrollbar{
+  display:none;
+}
+.poem{
+  font-family:'Cormorant Garamond', serif;
+  font-size:0.95rem;
+  line-height:1.8;
+  width:100%;
+  text-align:left;
+} 
 
     /* FINAL PAGE */
 
@@ -214,26 +225,33 @@
       transform:scale(1.05);
     }
 
-    /* MUSIC PLAYER */
-.music-container{
+.music-button{
   position:fixed;
   bottom:20px;
   right:20px;
-  z-index:10;
-  background:rgba(255,255,255,0.1);
-  padding:10px;
+
+  background:rgba(255,255,255,0.12);
+  color:white;
+
+  padding:14px 20px;
+
   border-radius:20px;
+
+  text-decoration:none;
+
   backdrop-filter:blur(10px);
+
   box-shadow:0 0 20px rgba(0,0,0,0.3);
+
+  transition:0.3s;
+
+  z-index:100;
 }
 
-.music-container iframe{
-  width:250px;
-  height:140px;
-  border:none;
-  border-radius:15px;
+.music-button:hover{
+  transform:scale(1.05);
+  background:rgba(255,255,255,0.2);
 }
-
   </style>
 </head>
 
@@ -274,28 +292,21 @@
   <div class="main" id="mainContent">
 
 
-<!-- Music Player -->
-
-<div class="music-container">
-
-  <iframe
-    src="https://youtu.be/0E8B6yl4I5I?si=HwL5s72--byW2Mge"
-    title="Bawat Piyesa - Muni Muni"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
-
-</div>
-
+<a
+  href="https://youtu.be/0E8B6yl4I5I?si=v47SQ1Rk9Icyw4ws"
+  target="_blank"
+  class="music-button"
+>
+  🎵 Play Me While Reading
+</a>
     <!-- INTRO -->
 
     <section>
 
-      <h2>Hi, You 🌹</h2>
+      <h2>Hi, Elly! 😉</h2>
 
       <p>
-        I made this little website because there are things
-        my heart wants to say in a way words alone never could.
+        gulat ka noh may pa ganitong atake, practice bilang future IT student HAHAHAHAHA so... let's clear things out
       </p>
 
     </section>
@@ -304,7 +315,7 @@
 
     <section>
 
-      <h2>Click the Polaroid 📸</h2>
+      <h2>Turn This Pic Around :p 📸</h2>
 
       <div class="flip-card" onclick="flipCard(this)">
 
@@ -315,7 +326,7 @@
           <div class="flip-card-front">
 
             <!-- Replace with your image -->
-            <img src="https://imgur.com/a/C8Z2kHw.jpeg" alt="photo">
+            <img src="https://i.imgur.com/q1oy8nK.jpeg" alt="photo">
 
           </div>
 
@@ -326,37 +337,41 @@
             <div class="poem">
 
               <p>
-                In quiet moments, I think of you,<br>
-                Like crimson skies with softer hue,<br>
-                A gentle warmth I never knew,<br>
-                Until my days were filled by you.
+                Bawat Piyesa<br>
+                </p>
+
+              <p>
+                Naaalala mo pa ba?<br>
+                Nang tayo'y unang magpunta sa manila,<br>
+                Mainit, mausok at magulo pero<br>
+                Ikaw ang nagsilbing tiyak sa di sigurado.
               </p>
 
               <br>
 
               <p>
-                Your laughter lingers like a song,<br>
-                A melody I've known so long,<br>
-                Somehow with you I feel I belong,<br>
-                Like every right inside the wrong.
+                Pasensya dahil ako'y nahuli sa ating daan<br>
+                Di man tayo umabot sa dapat nating puntahan,<br>
+                Nagpapasalamat ako sa Diyos at gumawa siya ng daan,<br>
+                Di man tayo nakapunta sa dapat nating paroroonan, nahanap ko naman kung sino ang nais kong puntahan.
               </p>
 
               <br>
 
               <p>
-                The stars may fade, the nights may end,<br>
-                But still my thoughts to you will bend,<br>
-                More than a crush, more than a friend,<br>
-                A feeling words can't fully send.
+                Naaalala mo pa ba ang unang tumugtog na kanta,<br>
+                Nang tayo'y sa parke magpunta,<br>
+                Marahil ito'y tinadhana dahil ipinahayag ng kanta ang aking nadarama,<br>
+                Pamilyar na ba? Narinig mo rin ang Bawat Piyesa diba?
               </p>
 
               <br>
 
               <p>
-                So here I am, heart open wide,<br>
-                No more emotions left to hide,<br>
-                If you'll let me stay by your side,<br>
-                I'd cherish every passing tide.
+                Tulad ng kanta,<br>
+                Ang mga piyesang kulang sa akin ay tila nahanap ko na,<br>
+                Pinuno mo ng kulay ang buhay kong kulang ng sigla,<br>
+                Nawa'y mapasakin din habambuhay ang bawat piyesang meron ka.
               </p>
 
             </div>
