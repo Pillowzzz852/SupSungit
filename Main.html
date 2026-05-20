@@ -1,0 +1,428 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sup Sungit 😤</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background:linear-gradient(135deg,#1a0000,#4d0000,#7a0000);
+      min-height:100vh;
+      overflow-x:hidden;
+      color:white;
+      position:relative;
+    }
+
+    /* FLOATING EMOJIS */
+
+    .floating{
+      position:fixed;
+      font-size:2rem;
+      opacity:0.3;
+      animation:float 12s linear infinite;
+      z-index:0;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(100vh) rotate(0deg);
+      }
+
+      100%{
+        transform:translateY(-120vh) rotate(360deg);
+      }
+    }
+
+    /* PASSWORD SCREEN */
+
+    .password-screen{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      z-index:2;
+    }
+
+    .glass{
+      background:rgba(255,255,255,0.08);
+      padding:40px;
+      border-radius:25px;
+      backdrop-filter:blur(10px);
+      width:320px;
+      text-align:center;
+      box-shadow:0 0 30px rgba(0,0,0,0.4);
+    }
+
+    .glass h1{
+      font-family:'Cormorant Garamond', serif;
+      font-size:2.5rem;
+      margin-bottom:10px;
+    }
+
+    .glass p{
+      opacity:0.8;
+      margin-bottom:20px;
+    }
+
+    input{
+      width:100%;
+      padding:12px;
+      border:none;
+      border-radius:12px;
+      outline:none;
+      margin-top:10px;
+      font-size:1rem;
+    }
+
+    button{
+      margin-top:20px;
+      padding:12px 25px;
+      border:none;
+      border-radius:12px;
+      background:#ff4d6d;
+      color:white;
+      cursor:pointer;
+      transition:0.3s;
+      font-size:1rem;
+    }
+
+    button:hover{
+      background:#ff758f;
+      transform:scale(1.05);
+    }
+
+    /* MAIN CONTENT */
+
+    .main{
+      display:none;
+      position:relative;
+      z-index:2;
+      padding:40px 20px;
+    }
+
+    section{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      gap:30px;
+      text-align:center;
+    }
+
+    h2{
+      font-family:'Cormorant Garamond', serif;
+      font-size:3rem;
+    }
+
+    p{
+      max-width:700px;
+      line-height:1.8;
+      font-size:1.1rem;
+    }
+
+    /* POLAROID */
+
+    .flip-card{
+      background:transparent;
+      width:320px;
+      height:430px;
+      perspective:1000px;
+      cursor:pointer;
+    }
+
+    .flip-card-inner{
+      position:relative;
+      width:100%;
+      height:100%;
+      transition:transform 1s;
+      transform-style:preserve-3d;
+    }
+
+    .flip-card.flipped .flip-card-inner{
+      transform:rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back{
+      position:absolute;
+      width:100%;
+      height:100%;
+      backface-visibility:hidden;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .flip-card-front{
+      background:white;
+    }
+
+    .flip-card-front img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .flip-card-back{
+      transform:rotateY(180deg);
+      background:#fff5f5;
+      color:#5a0000;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:25px;
+      overflow-y:auto;
+    }
+
+    .poem{
+      font-family:'Cormorant Garamond', serif;
+      font-size:1rem;
+      line-height:1.9;
+    }
+
+    /* FINAL PAGE */
+
+    .final-link{
+      text-decoration:none;
+      background:#ff4d6d;
+      color:white;
+      padding:15px 25px;
+      border-radius:15px;
+      transition:0.3s;
+      font-size:1.1rem;
+    }
+
+    .final-link:hover{
+      background:#ff758f;
+      transform:scale(1.05);
+    }
+
+    /* MUSIC PLAYER */
+.music-container{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  z-index:10;
+  background:rgba(255,255,255,0.1);
+  padding:10px;
+  border-radius:20px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+.music-container iframe{
+  width:250px;
+  height:140px;
+  border:none;
+  border-radius:15px;
+}
+
+  </style>
+</head>
+
+<body>
+
+  <!-- FLOATING EMOJIS -->
+
+  <div class="floating" style="left:5%; animation-delay:0s;">🐈</div>
+  <div class="floating" style="left:20%; animation-delay:3s;">🌺</div>
+  <div class="floating" style="left:40%; animation-delay:1s;">🐈‍⬛</div>
+  <div class="floating" style="left:60%; animation-delay:5s;">🪷</div>
+  <div class="floating" style="left:80%; animation-delay:2s;">🌸</div>
+
+  <!-- PASSWORD SCREEN -->
+
+  <div class="password-screen" id="passwordScreen">
+
+    <div class="glass">
+
+      <h1>Hi Elly! 😉</h1>
+
+      <p>
+        Enter the password
+      </p>
+
+      <input type="password" id="passwordInput" placeholder="Password">
+
+      <button onclick="checkPassword()">
+        Open
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- MAIN CONTENT -->
+
+  <div class="main" id="mainContent">
+
+
+<!-- Music Player -->
+
+<div class="music-container">
+
+  <iframe
+    src="https://youtu.be/0E8B6yl4I5I?si=HwL5s72--byW2Mge"
+    title="Bawat Piyesa - Muni Muni"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+
+</div>
+
+    <!-- INTRO -->
+
+    <section>
+
+      <h2>Hi, You 🌹</h2>
+
+      <p>
+        I made this little website because there are things
+        my heart wants to say in a way words alone never could.
+      </p>
+
+    </section>
+
+    <!-- POLAROID -->
+
+    <section>
+
+      <h2>Click the Polaroid 📸</h2>
+
+      <div class="flip-card" onclick="flipCard(this)">
+
+        <div class="flip-card-inner">
+
+          <!-- FRONT -->
+
+          <div class="flip-card-front">
+
+            <!-- Replace with your image -->
+            <img src="https://imgur.com/a/C8Z2kHw.jpeg" alt="photo">
+
+          </div>
+
+          <!-- BACK -->
+
+          <div class="flip-card-back">
+
+            <div class="poem">
+
+              <p>
+                In quiet moments, I think of you,<br>
+                Like crimson skies with softer hue,<br>
+                A gentle warmth I never knew,<br>
+                Until my days were filled by you.
+              </p>
+
+              <br>
+
+              <p>
+                Your laughter lingers like a song,<br>
+                A melody I've known so long,<br>
+                Somehow with you I feel I belong,<br>
+                Like every right inside the wrong.
+              </p>
+
+              <br>
+
+              <p>
+                The stars may fade, the nights may end,<br>
+                But still my thoughts to you will bend,<br>
+                More than a crush, more than a friend,<br>
+                A feeling words can't fully send.
+              </p>
+
+              <br>
+
+              <p>
+                So here I am, heart open wide,<br>
+                No more emotions left to hide,<br>
+                If you'll let me stay by your side,<br>
+                I'd cherish every passing tide.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- FINAL PAGE -->
+
+    <section>
+
+      <h2>Oop One Last Thing...</h2>
+
+      <p>
+        I wrote something for you.
+      </p>
+
+      <!-- Replace with your Google Docs link -->
+
+      <a class="final-link"
+         href="https://docs.google.com/document/d/16TTqafgu2TB_VuyczM1zG1rpLyM0Si9XNdLhjtVSfHY/edit?usp=sharing"
+         target="_blank">
+
+         Open My Letter
+
+      </a>
+
+    </section>
+
+  </div>
+
+  <script>
+
+    // PASSWORD
+
+    function checkPassword(){
+
+      const password = "01162007"; // CHANGE THIS
+      const input = document.getElementById("passwordInput").value;
+
+      if(input === password){
+
+        document.getElementById("passwordScreen").style.display = "none";
+        document.getElementById("mainContent").style.display = "block";
+
+      } else {
+
+        alert("Engk Mali try mo mmddyyyy 😉");
+
+      }
+    }
+
+    // FLIP POLAROID
+
+    function flipCard(card){
+
+      card.classList.toggle("flipped");
+
+    }
+
+  </script>
+
+</body>
+</html>
